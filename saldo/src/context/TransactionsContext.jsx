@@ -49,8 +49,20 @@ export function TransactionsProvider({ children }) {
     const [transactions, setTransactions] =
         useState(initialTransactions);
 
+    function addTransaction(transaction) {
+    setTransactions((currentTransactions) => [
+            ...currentTransactions,
+            transaction,
+        ]);
+    }
+
     return (
-        <TransactionsContext.Provider value={{ transactions }}>
+        <TransactionsContext.Provider
+            value={{
+                transactions,
+                addTransaction,
+            }}
+        >   
             {children}
         </TransactionsContext.Provider>
     );
