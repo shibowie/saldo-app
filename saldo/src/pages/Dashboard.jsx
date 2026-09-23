@@ -1,6 +1,7 @@
 import SummaryCards from "../components/SummaryCards";
 import CategoryOverview from "../components/CategoryOverview";
 import TransactionList from "../components/TransactionList";
+import CurrencyConverter from "../components/CurrencyConverter";
 
 function Dashboard() {
     return (
@@ -10,10 +11,11 @@ function Dashboard() {
 
                 <SummaryCards />
 
-                <section>
+                <section className="dashboard-grid">
                     <CategoryOverview />
+                    <CurrencyConverter />
 
-                    <div>
+                    <div className="recent-transactions">
                         <h2>Senaste transaktioner</h2>
                         <TransactionList />
                     </div>

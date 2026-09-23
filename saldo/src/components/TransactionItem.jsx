@@ -6,14 +6,16 @@ function TransactionItem({ transaction }) {
         : `- ${transaction.amount}`;
 
     return (
-        <article>
-            <h2>{transaction.title}</h2>
-
-            <p>
-                {transaction.category} | {transaction.date}
+        <article className="transaction-item">
+            <div>
+                <h2>{transaction.title}</h2>
+                <p>
+                    {transaction.category} | {transaction.date}
+                </p>
+            </div>
+            <p className={isIncome ? "income-amount" : "expense-amount"}>
+                {amount} kr
             </p>
-
-            <p>{amount} kr</p>
         </article>
     );
 }

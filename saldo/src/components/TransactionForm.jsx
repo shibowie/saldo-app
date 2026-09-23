@@ -8,7 +8,9 @@ function TransactionForm() {
     const [amount, setAmount] = useState("");
     const [type, setType] = useState("expense");
     const [category, setCategory] = useState("");
-    const [date, setDate] = useState("");
+    const [date, setDate] = useState(
+        new Date().toISOString().split("T")[0]
+    );
 
     const [titleError, setTitleError] = useState("");
     const [amountError, setAmountError] = useState("");
@@ -20,29 +22,39 @@ function TransactionForm() {
     function handleSubmit(event) {
         event.preventDefault();
 
+        let hasErrors = false;
+
         if (!title.trim()) {
             setTitleError("Beskrivning krävs.");
-            return;
+            hasErrors = true;
+        } else {
+            setTitleError("");
         }
-        setTitleError("");
-
+    
         if (!amount || Number(amount) <= 0) {
             setAmountError("Belopp måste vara större än 0.");
-            return;
+            hasErrors = true;
+        } else {
+            setAmountError("");
         }
-        setAmountError("");
-
+    
         if (!category) {
             setCategoryError("Välj en kategori.");
-            return;
+            hasErrors = true;
+        } else {
+            setCategoryError("");
         }
-        setCategoryError("");
-
+    
         if (!date) {
             setDateError("Välj ett datum.");
+            hasErrors = true;
+        } else {
+            setDateError("");
+        }
+    
+        if (hasErrors) {
             return;
         }
-        setDateError("");
 
         const newTransaction = {
             id: Date.now(),
@@ -59,7 +71,7 @@ function TransactionForm() {
         setAmount("");
         setType("expense");
         setCategory("");
-        setDate("");
+        setDate(new Date().toISOString().split("T")[0]);
     }
 
     return (

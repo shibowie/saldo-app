@@ -131,3 +131,106 @@ header nav {
   display: flex;
   gap: 1rem;
 }
+
+main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.summary-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.summary-card {
+  padding: 1.5rem;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+}
+
+.category-overview {
+  padding: 1.5rem;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+}
+
+.category-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid #eee;
+}
+
+.category-row:last-child {
+  border-bottom: none;
+}
+
+.recent-transactions {
+  padding: 1.5rem;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+}
+
+.transaction-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+  border-bottom: 1px solid #eee;
+}
+
+.transaction-item:last-child {
+  border-bottom: none;
+}
+
+.transaction-item h2 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.transaction-item p {
+  margin: 0.25rem 0 0;
+}
+
+.income-amount {
+  color: #218739;
+  font-weight: 600;
+}
+
+.expense-amount {
+  color: #c43d3d;
+  font-weight: 600;
+}
+
+
+
+
+@media (max-width: 768px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+
+  header {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  header nav {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .summary-cards {
+    grid-template-columns: 1fr;
+  }
+}

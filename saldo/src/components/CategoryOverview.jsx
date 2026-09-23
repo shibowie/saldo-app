@@ -18,11 +18,11 @@ function CategoryOverview() {
     }, {});
 
     return (
-        <section>
+        <section className="category-overview">
             <h2>Utgifter per kategori</h2>
 
             {Object.entries(categories).map(([category, amount]) => (
-                <div key={category}>
+                <div className="category-row" key={category}>
                     <span>{category}</span>
                     <span>{amount} kr</span>
                 </div>
