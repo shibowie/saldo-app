@@ -15,17 +15,17 @@ function SummaryCards() {
 
     return (
         <section className="summary-cards">
-            <div className="summary-card">
+            <div className="summary-card income-card">
                 <h2>Inkomster</h2>
                 <p>{income} kr</p>
             </div>
 
-            <div className="summary-card">
+            <div className="summary-card expense-card">
                 <h2>Utgifter</h2>
                 <p>{expenses} kr</p>
             </div>
 
-            <div className="summary-card">
+            <div className="summary-card balance-card">
                 <h2>Saldo</h2>
                 <p>{balance} kr</p>
             </div>

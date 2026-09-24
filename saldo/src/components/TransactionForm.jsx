@@ -75,7 +75,7 @@ function TransactionForm() {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form className="transaction-form" onSubmit={handleSubmit}>
 
             <label htmlFor="title">Beskrivning</label>
             <input
@@ -83,9 +83,15 @@ function TransactionForm() {
                 type="text"
                 value={title}
                 onChange={(event) => setTitle(event.target.value)}
+                aria-invalid={!!titleError}
+                aria-describedby={titleError ? "title-error" : undefined}
             />
 
-            {titleError && <p><b>{titleError}</b></p>}
+            {titleError && (
+                <p className="form-error" id="title-error">
+                    {titleError}
+                </p>
+            )}
 
             <label htmlFor="amount">Belopp</label>
             <input
@@ -93,11 +99,17 @@ function TransactionForm() {
                 type="number"
                 value={amount}
                 onChange={(event) => setAmount(event.target.value)}
+                aria-invalid={!!amountError}
+                aria-describedby={amountError ? "amount-error" : undefined}
             />
 
-            {amountError && <p><b>{amountError}</b></p>}
+            {amountError && (
+                <p className="form-error" id="title-error">
+                    {amountError}
+                </p>
+            )}
 
-            <fieldset>
+            <fieldset className="transaction-type">
                 <legend>Typ</legend>
                     <label>
                         <input
@@ -127,9 +139,11 @@ function TransactionForm() {
                 id="category"
                 value={category}
                 onChange={(event) => setCategory(event.target.value)}
+                aria-invalid={!!categoryError}
+                aria-describedby={categoryError ? "category-error" : undefined}
             >   
+                
                 <option value="">Välj kategori</option>
-
                 {categories.map((category) => (
                     <option key={category} value={category}>
                         {category}
@@ -137,7 +151,11 @@ function TransactionForm() {
                 ))}
             </select>
 
-            {categoryError && <p><b>{categoryError}</b></p>}
+            {categoryError && (
+                <p className="form-error" id="category-error">
+                    {categoryError}
+                </p>
+            )}
 
             <label htmlFor="date">Datum</label>
             <input
@@ -145,17 +163,23 @@ function TransactionForm() {
                 type="date"
                 value={date}
                 onChange={(event) => setDate(event.target.value)}
+                aria-invalid={!!dateError}
+                aria-describedby={dateError ? "date-error" : undefined}
             />
 
-            {dateError && <p><b>{dateError}</b></p>}
+            {dateError && (
+                <p className="form-error" id="date-error">
+                    {dateError}
+                </p>
+            )}
 
-            <p> Du skriver: {title} </p>
+            {/* <p> Du skriver: {title} </p>
             <p> Belopp: {amount}:- </p>
             <p> Typ: {type} </p>
             <p> Kategori: {category} </p>
-            <p> Datum: {date}</p>
+            <p> Datum: {date}</p> */}
 
-            <button type="submit">Lägg till transaktion</button>
+            <button className="submit-button" type="submit">Lägg till transaktion</button>
         </form>
     );
 }

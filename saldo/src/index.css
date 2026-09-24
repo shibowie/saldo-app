@@ -154,7 +154,36 @@ main {
 .summary-card {
   padding: 1.5rem;
   border: 1px solid #ddd;
-  border-radius: 12px;
+  border-radius: 12px;background: #fff;
+}
+
+.summary-card h2 {
+  margin: 0 0 0.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.summary-card p {
+  margin: 0;
+  font-size: 1.75rem;
+  font-weight: 700;
+}
+
+.income-card {
+  border-left: 4px solid #218739;
+}
+
+.expense-card {
+  border-left: 4px solid #c43d3d;
+}
+
+.balance-card {
+  border-left: 4px solid #555;
+  padding: 1.75rem;
+}
+
+.balance-card p {
+  font-size: 2rem;
 }
 
 .category-overview {
@@ -209,6 +238,108 @@ main {
 .expense-amount {
   color: #c43d3d;
   font-weight: 600;
+}
+
+.transaction-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  max-width: 600px;
+  margin-bottom: 2rem;
+}
+
+.transaction-form label {
+  font-weight: 600;
+  margin-top: 0.75rem;
+}
+
+.transaction-form input,
+.transaction-form select {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font: inherit;
+}
+
+.transaction-type {
+  display: flex;
+  gap: 1rem;
+  border: none;
+  padding: 0;
+  margin: 0.75rem 0 0;
+}
+
+.transaction-type legend {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  width: 100%;
+}
+
+.transaction-type label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0;
+  font-weight: 400;
+}
+
+.transaction-type input {
+  width: auto;
+}
+
+.submit-button {
+  margin-top: 1rem;
+  padding: 0.75rem 1rem;
+  border: none;
+  border-radius: 8px;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  background: #333;
+  color: #fff;
+}
+
+.submit-button:hover {
+  background: #555;
+}
+
+.submit-button:focus-visible {
+  outline: 3px solid #78a0e0;
+  outline-offset: 3px;
+}
+
+.form-error {
+  margin: 0.25rem 0 0;
+  color: #c43d3d;
+  font-size: 0.875rem;
+}
+
+.transaction-form input[aria-invalid="true"],
+.transaction-form select[aria-invalid="true"] {
+  border-color: #c43d3d;
+}
+
+.transaction-form input:focus,
+.transaction-form select:focus {
+  outline: 2px solid #8ab4f8;
+  outline-offset: 1px;
+}
+
+.transaction-form input[aria-invalid="true"]:focus,
+.transaction-form select[aria-invalid="true"]:focus {
+  outline-color: #c43d3d;
+}
+
+.view-all-link {
+  display: inline-block;
+  margin-top: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.view-all-link:hover {
+  text-decoration: underline;
 }
 
 

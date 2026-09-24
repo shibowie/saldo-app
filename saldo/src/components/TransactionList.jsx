@@ -1,7 +1,12 @@
 import { useTransactions } from "../context/TransactionsContext";
 import TransactionItem from "./TransactionItem";
 
-function TransactionList({ filter="all", sortOrder="newest" }) {
+function TransactionList({ 
+    filter="all", 
+    sortOrder="newest",
+    limit,
+    }) {
+    
     const { transactions } = useTransactions();
 
     const filteredTransactions =
@@ -31,12 +36,16 @@ function TransactionList({ filter="all", sortOrder="newest" }) {
         return 0;
     });
 
+    const displayedTransactions = limit
+        ? sortedTransactions.slice(0, limit)
+        : sortedTransactions;
+
     return (
         <section>
-            {sortedTransactions.length === 0 ? (
+            {displayedTransactions.length === 0 ? (
                 <p>Inga transaktioner hittades.</p>
             ) : (
-                sortedTransactions.map((transaction) => (
+                displayedTransactions.map((transaction) => (
                     <TransactionItem
                         key={transaction.id}
                         transaction={transaction}

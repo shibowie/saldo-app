@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 import SummaryCards from "../components/SummaryCards";
 import CategoryOverview from "../components/CategoryOverview";
 import TransactionList from "../components/TransactionList";
@@ -17,7 +19,10 @@ function Dashboard() {
 
                     <div className="recent-transactions">
                         <h2>Senaste transaktioner</h2>
-                        <TransactionList />
+                        <TransactionList limit={5} />
+                        <Link to="/transactions" className="view-all-link">
+                            Visa alla transaktioner →
+                        </Link>
                     </div>
                 </section>
             </main>
