@@ -59,11 +59,31 @@ export function TransactionsProvider({ children }) {
         ]);
     }
 
+    function updateTransaction(updatedTransaction) {
+        setTransactions((currentTransactions) =>
+            currentTransactions.map((transaction) =>
+                transaction.id === updatedTransaction.id
+                    ? updatedTransaction
+                    : transaction
+            )   
+        );
+    }
+
+    function deleteTransaction(transactionId) {
+        setTransactions((currentTransactions) =>
+            currentTransactions.filter(
+                (transaction) => transaction.id !== transactionId
+            )
+        );
+    }
+
     return (
         <TransactionsContext.Provider
             value={{
                 transactions,
                 addTransaction,
+                updateTransaction,
+                deleteTransaction,
             }}
         >   
             {children}

@@ -5,6 +5,8 @@ function TransactionList({
     filter="all", 
     sortOrder="newest",
     limit,
+    onEdit,
+    showActions = true,
     }) {
     
     const { transactions } = useTransactions();
@@ -49,6 +51,8 @@ function TransactionList({
                     <TransactionItem
                         key={transaction.id}
                         transaction={transaction}
+                        onEdit={onEdit}
+                        showActions={showActions}
                     />
                 ))
             )}

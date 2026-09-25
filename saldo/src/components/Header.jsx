@@ -3,15 +3,18 @@ import { Link } from "react-router-dom";
 function Header({ theme, setTheme }) {
     return (
         <header>
-            <Link to="/">Saldo</Link>
+            <div className="header-left">
+                <Link to="/">Saldo</Link>
+            
+                <nav>
+                    <Link to="/">Översikt</Link>
+                    <Link to="/transactions">Transaktioner</Link>
+                </nav>
+            </div>
+            
+            <label className="theme-selector" htmlFor="theme-select">
+                <span>Tema</span>
 
-            <nav>
-                <Link to="/">Översikt</Link>
-                <Link to="/transactions">Transaktioner</Link>
-            </nav>
-
-            <label htmlFor="theme-select">
-                Tema
                 <select
                     id="theme-select"
                     value={theme}

@@ -1,9 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import categories from "../data/categories";
 import { useTransactions } from "../context/TransactionsContext";
 
-function TransactionForm() {
+function TransactionForm({ editingTransaction, onEditComplete }) {
     const [title, setTitle] = useState("");
     const [amount, setAmount] = useState("");
     const [type, setType] = useState("expense");
@@ -17,7 +17,32 @@ function TransactionForm() {
     const [categoryError, setCategoryError] = useState("");
     const [dateError, setDateError] = useState("");
 
-    const { addTransaction } = useTransactions();
+    function resetForm() {
+        setTitle("");
+        setAmount("");
+        setType("expense");
+        setCategory("");
+        setDate(new Date().toISOString().split("T")[0]);
+
+        setTitleError("");
+        setAmountError("");
+        setCategoryError("");
+        setDateError("");
+    }
+
+    useEffect(() => {
+        if (!editingTransaction) {
+            return;
+        }
+    
+        setTitle(editingTransaction.title);
+        setAmount(editingTransaction.amount);
+        setType(editingTransaction.type);
+        setCategory(editingTransaction.category);
+        setDate(editingTransaction.date);
+    }, [editingTransaction]);
+
+    const { addTransaction, updateTransaction } = useTransactions();
 
     function handleSubmit(event) {
         event.preventDefault();
@@ -56,14 +81,30 @@ function TransactionForm() {
             return;
         }
 
-        const newTransaction = {
-            id: Date.now(),
-            title: title,
-            amount: Number(amount),
-            type: type,
-            category: category,
-            date: date,
-        };
+        if (editingTransaction) {
+            updateTransaction({
+                id: editingTransaction.id,
+                title,
+                amount: Number(amount),
+                type,
+                category,
+                date,
+            });
+        } else {
+            addTransaction({
+                id: Date.now(),
+                title,
+                amount: Number(amount),
+                type,
+                category,
+                date,
+            });
+        }
+
+        if (editingTransaction) {
+            resetForm();
+            onEditComplete();
+        }
     
         addTransaction(newTransaction);
 
@@ -173,13 +214,24 @@ function TransactionForm() {
                 </p>
             )}
 
-            {/* <p> Du skriver: {title} </p>
-            <p> Belopp: {amount}:- </p>
-            <p> Typ: {type} </p>
-            <p> Kategori: {category} </p>
-            <p> Datum: {date}</p> */}
+            <button className="submit-button" type="submit">
+                {editingTransaction
+                ? "Spara ändringar"
+                : "Lägg till transaktion"}
+            </button>
 
-            <button className="submit-button" type="submit">Lägg till transaktion</button>
+            {editingTransaction && (
+                <button
+                    className="cancel-button"
+                    type="button"
+                    onClick={() => {
+                        resetForm();
+                        onEditComplete();
+                    }}
+                >
+                    Avbryt
+                </button>
+            )}
         </form>
     );
 }

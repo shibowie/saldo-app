@@ -19,7 +19,10 @@ function Dashboard() {
 
                     <div className="recent-transactions">
                         <h2>Senaste transaktioner</h2>
-                        <TransactionList limit={5} />
+                        <TransactionList 
+                            limit={5} 
+                            showActions={false}
+                        />
                         <Link to="/transactions" className="view-all-link">
                             Visa alla transaktioner →
                         </Link>

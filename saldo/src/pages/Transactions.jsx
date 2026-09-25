@@ -7,6 +7,8 @@ function Transactions() {
     const [filter, setFilter] = useState("all");
     const [sortOrder, setSortOrder] = useState("newest");
 
+    const [editingTransaction, setEditingTransaction] = useState(null);
+
     return (
         <main>
             <h1>Transactions</h1>
@@ -34,10 +36,14 @@ function Transactions() {
                 <option value="lowest">Lägsta belopp</option>
             </select>
 
-            <TransactionForm />
+            <TransactionForm 
+                editingTransaction={editingTransaction}
+                onEditComplete={() => setEditingTransaction(null)}
+            />
             <TransactionList 
                 filter={filter}
                 sortOrder={sortOrder}
+                onEdit={setEditingTransaction}
             />
         </main>
     );
