@@ -30,29 +30,50 @@ function CurrencyConverter() {
     }
 
     return (
-        <section>
+        <section className="currency-converter">
             <h2>Valutakonverterare</h2>
 
             <label htmlFor="currency-amount">Belopp i SEK</label>
 
             <input
+                className="currency-input"
                 id="currency-amount"
                 type="number"
                 value={amount}
-                onChange={(event) => setAmount(event.target.value)}
+                onChange={(event) => {setAmount(event.target.value); setRate(null); setError(""); setInputError("");}}
                 placeholder="100"
             />
 
-            {inputError && <p><b>{inputError}</b></p>}
+            {inputError && (
+                <p className="converter-error" role="alert">
+                    {inputError}
+                </p>
+            )}
 
-            <button type="button" onClick={handleConvert} disabled={isLoading}>
-                {isLoading ? "Hämtar..." : "Konvertera"}
+            <button 
+                className="convert-button"
+                type="button" 
+                onClick={handleConvert} 
+                disabled={isLoading}
+            >
+                {isLoading ? (
+                        <>
+                            <span className="loading-spinner" aria-hidden="true" />
+                            Hämtar...
+                        </>
+                    ) : (
+                        "Konvertera"
+                )}
             </button>
 
-            {error && <p><b>{error}</b></p>}
+            {error && (
+                <p className="converter-error" role="alert">
+                    {error}
+                </p>
+            )}
 
             {rate && amount && (
-                <p>
+                <p className="conversion-result">
                     {amount} SEK = {(Number(amount) * rate).toFixed(2)} EUR
                 </p>
             )}
