@@ -3,6 +3,7 @@ import { useEffect } from "react";
 
 import Header from "./components/Header";
 import Dashboard from "./pages/Dashboard";
+import Overview from "./pages/Overview";
 import Transactions from "./pages/Transactions";
 import useLocalStorage from "./hooks/useLocalStorage";
 
@@ -23,6 +24,7 @@ function App() {
     
       <Routes>
         <Route path="/" element={<Dashboard />} />
+        <Route path="/overview" element={<Overview theme={theme} />} />
         <Route path="/transactions" element={<Transactions />} />
       </Routes>
     </>

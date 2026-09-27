@@ -7,7 +7,7 @@ function Header({ theme, setTheme }) {
                 <Link to="/">Saldo</Link>
             
                 <nav>
-                    <Link to="/">Översikt</Link>
+                    <Link to="/overview">Översikt</Link>
                     <Link to="/transactions">Transaktioner</Link>
                 </nav>
             </div>

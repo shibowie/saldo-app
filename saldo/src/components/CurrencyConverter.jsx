@@ -22,7 +22,7 @@ function CurrencyConverter() {
             const exchangeRate = await getExchangeRate("SEK", "EUR");
         
             setRate(exchangeRate);
-        } catch (error) {
+        } catch {
             setError("Kunde inte hämta växelkursen. Försök igen.");
         } finally {
             setIsLoading(false);
@@ -33,7 +33,7 @@ function CurrencyConverter() {
         <section className="currency-converter">
             <h2>Valutakonverterare</h2>
 
-            <label htmlFor="currency-amount">Belopp i SEK</label>
+            <label htmlFor="currency-amount">Från SEK till EUR</label>
 
             <input
                 className="currency-input"

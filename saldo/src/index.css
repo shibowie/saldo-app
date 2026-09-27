@@ -18,6 +18,14 @@
   --color-error-surface: #fff1f1;
   --color-error-border: #f2b8b8;
   --color-error-text: #a32d2d;
+
+  --chart-housing: #27d6d1;
+  --chart-food: #ffa78e;
+  --chart-transport: #ff4da6;
+  --chart-entertainment: #b7f1f4;
+  --chart-shopping: #218739;
+  --chart-health: #7b4a8f;
+  --chart-other: #5a3a2a;
 }
 
 [data-theme="neon"] {
@@ -40,6 +48,14 @@
   --color-error-surface: #32152a;
   --color-error-border: #ff5ca8;
   --color-error-text: #ff9bc9;
+
+  --chart-housing: #ff5ca8;
+  --chart-food: #bc6cff;
+  --chart-transport: #00f0ff;
+  --chart-entertainment: #ffb86b;
+  --chart-shopping: #f8f5ff;
+  --chart-health: #7b4a8f;
+  --chart-other: #b28bc3;
 }
 
 [data-theme="dark"] {
@@ -62,6 +78,14 @@
   --color-error-surface: #382124;
   --color-error-border: #b24a1d;
   --color-error-text: #e58a68;
+
+  --chart-housing: #ff5ca8;
+  --chart-food: #bc6cff;
+  --chart-transport: #00f0ff;
+  --chart-entertainment: #ffb86b;
+  --chart-shopping: #f8f5ff;
+  --chart-health: #b28bc3;
+  --chart-other: #f5eee5;
 }
 
 .theme-selector {

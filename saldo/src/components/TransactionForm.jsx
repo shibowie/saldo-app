@@ -101,18 +101,11 @@ function TransactionForm({ editingTransaction, onEditComplete }) {
             });
         }
 
+        resetForm();
+
         if (editingTransaction) {
-            resetForm();
             onEditComplete();
         }
-    
-        addTransaction(newTransaction);
-
-        setTitle("");
-        setAmount("");
-        setType("expense");
-        setCategory("");
-        setDate(new Date().toISOString().split("T")[0]);
     }
 
     return (
@@ -145,7 +138,7 @@ function TransactionForm({ editingTransaction, onEditComplete }) {
             />
 
             {amountError && (
-                <p className="form-error" id="title-error">
+                <p className="form-error" id="amount-error">
                     {amountError}
                 </p>
             )}
