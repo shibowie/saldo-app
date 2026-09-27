@@ -539,6 +539,11 @@ main > h1 {
   margin-top: 0.15rem;
 }
 
+.expense-chart {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
 
 
 
