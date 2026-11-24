@@ -1,0 +1,56 @@
+# Vercel Web Analytics Installation Report
+
+## Summary
+Successfully installed and configured Vercel Web Analytics for this React + Vite project following the latest official documentation from https://vercel.com/docs/analytics/quickstart.
+
+## Changes Made
+
+### 1. Package Installation
+- **Added dependency**: `@vercel/analytics@^2.0.1`
+- Installed via: `npm install @vercel/analytics`
+- Updated `package.json` and `package-lock.json` accordingly
+
+### 2. Code Integration
+**Modified: `src/App.jsx`**
+- Added import statement: `import { Analytics } from "@vercel/analytics/react";`
+- Added `<Analytics />` component at the end of the JSX return statement
+- Follows React/Vite framework-specific instructions from official Vercel documentation
+
+## Implementation Details
+
+The Analytics component was added to `App.jsx` (the root application component) rather than `main.jsx` to ensure it renders within the React component tree and has access to the React Router context. This placement is ideal for tracking page views across all routes.
+
+The implementation follows the official Vercel documentation pattern for React/Vite applications:
+```jsx
+import { Analytics } from "@vercel/analytics/react";
+
+function App() {
+  return (
+    <>
+      {/* app content */}
+      <Analytics />
+    </>
+  );
+}
+```
+
+## Verification
+
+✅ **Build**: Successfully builds without errors (`npm run build`)
+✅ **Linting**: No new linting errors introduced in App.jsx
+✅ **Tests**: No test suite configured in this project
+✅ **Lock Files**: package-lock.json updated correctly
+
+## Next Steps
+
+After deployment to Vercel:
+1. Navigate to the Analytics section in your Vercel Dashboard
+2. Click "Enable" to activate Web Analytics
+3. Analytics data will start appearing after a few days of visitors
+4. Verify tracking by checking the browser Network tab for requests to the analytics endpoint
+
+## Notes
+
+- No environment variables required - the package automatically detects the Vercel environment upon deployment
+- The Analytics component respects privacy and compliance standards
+- Pre-existing linting errors in `TransactionForm.jsx` and `TransactionsContext.jsx` remain unchanged (not related to this implementation)
