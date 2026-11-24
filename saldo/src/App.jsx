@@ -1,5 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import { useEffect } from "react";
+import { Analytics } from "@vercel/analytics/react";
 
 import Header from "./components/Header";
 import Dashboard from "./pages/Dashboard";
@@ -27,6 +28,7 @@ function App() {
         <Route path="/overview" element={<Overview theme={theme} />} />
         <Route path="/transactions" element={<Transactions />} />
       </Routes>
+      <Analytics />
     </>
   );
 }
